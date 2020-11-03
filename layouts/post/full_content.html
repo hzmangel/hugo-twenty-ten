@@ -13,14 +13,14 @@
         <div class="post-meta">
             分类：
             <ul class="list-inline">
-                {{ range .Params.categories }} <li><a href="/categories/{{ . | urlize }}">{{ . }}</a></li> {{ end }}
+                {{ range .Params.categories }} <li class="list-inline-item"><a href="/categories/{{ . | urlize }}">{{ . }}</a></li> {{ end }}
             </ul>
         </div>
 
         <div class="post-meta">
             标签：
             <ul class="list-inline">
-                {{ range .Params.tags }} <li><a href="/tags/{{ . | urlize }}"><span class="label label-default">{{ . }}</span></a></li> {{ end }}
+                {{ range .Params.tags }} <li class="list-inline-item"><a href="/tags/{{ . | urlize }}"><span class="label label-default">{{ . }}</span></a></li> {{ end }}
             </ul>
         </div>
 

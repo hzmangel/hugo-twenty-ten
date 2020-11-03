@@ -2,9 +2,9 @@
 <html lang="{{.Site.LanguageCode}}">
     <head>
         <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        <meta property="og:title" content="{{ if ne .URL "/" }} {{ .Title }} &middot; {{ end }} {{ .Site.Title }}" />
+        <meta property="og:title" content="{{ if ne .Permalink "/" }} {{ .Title }} &middot; {{ end }} {{ .Site.Title }}" />
         <meta property="og:site_name" content="{{ .Site.Title }}" />
         <meta property="og:url" content="{{ .Permalink }}" />
 
@@ -21,7 +21,7 @@
 
         <title>
             {{ .Site.Title }}
-            {{ if ne .URL "/" }}
+            {{ if ne .Permalink "/" }}
                 | {{ .Title }}
             {{ else }}
                 | {{ .Site.Params.Description }}
@@ -31,22 +31,21 @@
         <meta name="description" content="{{ .Site.Params.description }}" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
-
-        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/atelier-dune.dark.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/styles/default.min.css">
 
         <link rel="stylesheet" type="text/css" href="{{.Site.BaseURL}}css/screen.css" />
 
-        {{ if .RSSLink }}
-          <link href="{{ .RSSLink }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" />
-          <link href="{{ .RSSLink }}" rel="feed" type="application/rss+xml" title="{{ .Site.Title }}" />
+        {{ with .OutputFormats.Get "RSS" }}
+          <link href="{{ .RelPermalink }}" rel="alternate" type="application/rss+xml" title="{{ $.Title }}" />
+          <link href="{{ .RelPermalink }}" rel="feed" type="application/rss+xml" title="{{ $.Title }}" />
         {{ end }}
 
         <link rel="canonical" href="{{ .Permalink }}" />
     </head>
 
     <body>
-        <div class="container" id="site-wrapper">
+        <div class="container-md" id="site-wrapper">
             {{ partial "banner.html" . }}
             {{ partial "navigation.html" . }}
 
